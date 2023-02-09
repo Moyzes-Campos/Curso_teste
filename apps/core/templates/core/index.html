@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block main %}
+<div class="row">
+    <div class="col-4">Oi</div>
+    <div class="col-4">
+        Oi {{ usuario.funcionario.user }} da empresa {{ usuario.funcionario.empresa }}
+        <a href="{% url 'funcionarios_list' %}"> Gerenciar Funcionarios</a>
+        <br>
+        <a href="{% url 'departamento_list' %}">Gerenciar Depar</a>
+    </div>
+    <div class="col-4">
+        <a href="{% url 'logout' %}">logout</a>
+        {% if usuario.funcionario.empresa %}
+            <a href="{% url 'editar_empresa' usuario.funcionario.empresa.id %}">Editar Empresa</a>
+        {% else %}
+            <a href="{% url 'criar_empresa' %}">Criar Empresa</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
